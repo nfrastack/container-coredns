@@ -1,0 +1,36 @@
+#!/command/with-contenv bash
+
+source /assets/functions/00-container
+PROCESS_NAME="coredns"
+prepare_service
+check_container_initialized
+
+liftoff
+
+case "${LOG_TYPE,,}" in
+    both )
+        SHOW_OUTPUT=TRUE
+        touch "${LOG_PATH}"/"${LOG_FILE}"
+        chown -R "${COREDNS_USER}" "${LOG_PATH}"/"${LOG_FILE}"
+    ;;
+    console )
+        SHOW_OUTPUT=TRUE
+        LOG_PATH=/dev
+        LOG_FILE=/null
+    ;;
+    file )
+        SHOW_OUTPUT=FALSE
+        touch "${LOG_PATH}"/"${LOG_FILE}"
+        chown -R "${COREDNS_USER}" "${LOG_PATH}"/"${LOG_FILE}"
+    ;;
+    none )
+        SHOW_OUTPUT=FALSE
+        LOG_PATH=/dev
+        LOG_FILE=null
+    ;;
+esac
+
+print_start "Starting CoreDNS ${COREDNS_VERSION}"
+export GOMAXPROCS=${MAX_CPUS}
+exec s6-setuidgid "${COREDNS_USER}" coredns \
+                                     -conf ${CONFIG_PATH}/${CONFIG_FILE} | ts -m '%Y-%m-%dT%H:%M.%S' >> ${LOG_PATH}/${LOG_FILE}

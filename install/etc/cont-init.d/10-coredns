@@ -1,0 +1,11 @@
+#!/command/with-contenv bash
+
+source /assets/functions/00-container
+prepare_service
+SERVICE_NAME="coredns"
+
+bootstrap_filesystem logs
+bootstrap_filesystem coredns
+configure_coredns
+
+liftoff
