@@ -1,0 +1,45 @@
+services:
+  coredns-app:
+    image: tiredofit/coredns
+    container_name: coredns-app
+    ports:
+      - 53:53
+      - 53:53/udp
+    volumes:
+      - ./config:/config
+      - ./data:/data
+      - ./logs:/logs
+    environment:
+      - TIMEZONE=America/Vancouver
+      - CONTAINER_NAME=coredns-app
+      - CONTAINER_ENABLE_MONITORING=FALSE
+
+      - LISTEN_PORT=53
+
+      - DEFAULT_ENABLE_FORWARD=true
+      - DEFAULT_FORWARD_MODE=system
+      - DEFAULT_FORWARD_UPSTREAM_HOST=dns://1.1.1.1:53 dns://1.0.0.1:53
+      - DEFAULT_CACHE=30
+      - DEFAULT_ERRORS=true
+      - DEFAULT_LOOP=true
+
+      - DOMAIN_01_NAME=example.com
+      - DOMAIN_01_ROLE=primary
+      - DOMAIN_01_ZONE_FILE=/data/example_com.zone
+      - DOMAIN_01_TRANSFER_TO=*
+      - DOMAIN_01_ENABLE_FORWARD=true
+      - DOMAIN_01_FORWARD_MODE=system
+      - DOMAIN_01_CACHE=60
+
+      - DOMAIN_02_NAME=internal.lan
+      - DOMAIN_02_ROLE=secondary
+      - DOMAIN_02_TRANSFER_FROM=10.0.0.1:53
+      - DOMAIN_02_ENABLE_FORWARD=false
+      - DOMAIN_02_LISTEN_PORT=1053
+    networks:
+      - services
+    restart: always
+
+networks:
+  services:
+    external: true
