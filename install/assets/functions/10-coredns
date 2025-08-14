@@ -90,11 +90,13 @@ configure_coredns() {
             domain_reload_var="DOMAIN_${padded_i}_RELOAD"
             domain_cache_var="DOMAIN_${padded_i}_CACHE"
             domain_errors_var="DOMAIN_${padded_i}_ERRORS"
+            domain_log_queries_var="DOMAIN_${padded_i}_LOG_QUERIES"
             domain_loop_var="DOMAIN_${padded_i}_LOOP"
 
             domain_reload="${!domain_reload_var:-${RELOAD:-${DEFAULT_RELOAD}}}"
             domain_cache="${!domain_cache_var:-${CACHE:-${DEFAULT_CACHE}}}"
             domain_errors="${!domain_errors_var:-${ERRORS:-${DEFAULT_ERRORS}}}"
+            domain_log_queries="${!domain_log_queries_var:-${LOG_QUERIES:-${DEFAULT_LOG_QUERIES}}}"
             domain_loop="${!domain_loop_var:-${LOOP:-${DEFAULT_LOOP}}}"
 
             if [ -n "${domain_name}" ]; then
@@ -151,6 +153,9 @@ configure_coredns() {
                 fi
                 if var_true "$domain_loop"; then
                     echo "  loop" >> "${CONFIG_PATH}/${CONFIG_FILE}"
+                fi
+                if var_true "${domain_log_queries}"; then
+                    echo "  log" >> "${CONFIG_PATH}/${CONFIG_FILE}"
                 fi
                 if var_true "$domain_reload"; then
                     echo "  reload" >> "${CONFIG_PATH}/${CONFIG_FILE}"

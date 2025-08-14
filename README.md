@@ -98,49 +98,51 @@ The following directories are used for configuration and can be mapped for persi
 
 #### Core Variables
 
-| Variable                        | Description                                                    | Default                                  |
-| ------------------------------- | -------------------------------------------------------------- | ---------------------------------------- |
-| `CONFIG_PATH`                   | Path to CoreDNS config files                                   | `/config/`                               |
-| `CONFIG_FILE`                   | CoreDNS config file name                                       | `coredns.conf`                           |
-| `DATA_PATH`                     | Path to CoreDNS data files                                     | `/data/`                                 |
-| `LOG_PATH`                      | Path to log files                                              | `/logs/`                                 |
-| `LOG_FILE`                      | CoreDNS log file name                                          | `coredns.log`                            |
-| `LISTEN_IP`                     | IP address to bind CoreDNS                                     | `0.0.0.0`                                |
-| `LISTEN_PORT`                   | Port to bind CoreDNS                                           | `53`                                     |
-| `CONFIG_INCLUDE`                | Path to custom config include file                             | `/config/config.include`                 |
+| Variable         | Description                        | Default                  |
+| ---------------- | ---------------------------------- | ------------------------ |
+| `CONFIG_PATH`    | Path to CoreDNS config files       | `/config/`               |
+| `CONFIG_FILE`    | CoreDNS config file name           | `coredns.conf`           |
+| `DATA_PATH`      | Path to CoreDNS data files         | `/data/`                 |
+| `LOG_PATH`       | Path to log files                  | `/logs/`                 |
+| `LOG_FILE`       | CoreDNS log file name              | `coredns.log`            |
+| `LISTEN_IP`      | IP address to bind CoreDNS         | `0.0.0.0`                |
+| `LISTEN_PORT`    | Port to bind CoreDNS               | `53`                     |
+| `CONFIG_INCLUDE` | Path to custom config include file | `/config/config.include` |
 
 #### Per-Domain Variables (for multiple domains)
 
 Set these for each domain, incrementing the XX index (e.g., 01, 02, 03...):
 
-| Variable                                 | Description                                                      | Example                                 |
-| ----------------------------------------- | ---------------------------------------------------------------- | --------------------------------------- |
-| `DOMAIN_XX_NAME`                         | Domain name                                                      | `example.com`                           |
-| `DOMAIN_XX_ROLE`                         | `primary` or `secondary`                                         | `primary`                               |
-| `DOMAIN_XX_ZONE_FILE`                    | Path to zone file (primary only)                                 | `/data/example_com.zone`                |
-| `DOMAIN_XX_HOSTS_FILE`                   | Path to hosts file (optional, primary only)                      | `/data/example_com.hosts`               |
-| `DOMAIN_XX_TRANSFER_TO`                  | Space-separated list of IPs allowed AXFR (primary only)          | `10.0.0.2 *`                            |
-| `DOMAIN_XX_TRANSFER_FROM`                | Space-separated list of IP:PORT to AXFR from (secondary only)    | `10.0.0.1:53`                           |
-| `DOMAIN_XX_LISTEN_PORT`                  | Listen port for this domain (overrides global)                   | `1053`                                  |
-| `DOMAIN_XX_ENABLE_FORWARD`               | Enable forwarding for this domain (`true`/`false`)               | `true`                                  |
-| `DOMAIN_XX_FORWARD_MODE`                 | Forward mode: `system` or `upstream`                            | `system`                                |
-| `DOMAIN_XX_FORWARD_UPSTREAM_HOST`        | Upstream DNS hosts (space-separated)                             | `dns://1.1.1.1:53 dns://1.0.0.1:53`     |
-| `DOMAIN_XX_RELOAD`                       | Enable reload plugin (`true`/`false`)                            | `true`                                  |
-| `DOMAIN_XX_CACHE`                        | Cache TTL in seconds                                             | `30`                                    |
-| `DOMAIN_XX_ERRORS`                       | Enable errors plugin (`true`/`false`)                            | `true`                                  |
-| `DOMAIN_XX_LOOP`                         | Enable loop plugin (`true`/`false`)                              | `true`                                  |
+| Variable                          | Description                                                   | Example                             |
+| --------------------------------- | ------------------------------------------------------------- | ----------------------------------- |
+| `DOMAIN_XX_NAME`                  | Domain name                                                   | `example.com`                       |
+| `DOMAIN_XX_ROLE`                  | `primary` or `secondary`                                      | `primary`                           |
+| `DOMAIN_XX_ZONE_FILE`             | Path to zone file (primary only)                              | `/data/example_com.zone`            |
+| `DOMAIN_XX_HOSTS_FILE`            | Path to hosts file (optional, primary only)                   | `/data/example_com.hosts`           |
+| `DOMAIN_XX_TRANSFER_TO`           | Space-separated list of IPs allowed AXFR (primary only)       | `10.0.0.2 *`                        |
+| `DOMAIN_XX_TRANSFER_FROM`         | Space-separated list of IP:PORT to AXFR from (secondary only) | `10.0.0.1:53`                       |
+| `DOMAIN_XX_LISTEN_PORT`           | Listen port for this domain (overrides global)                | `1053`                              |
+| `DOMAIN_XX_ENABLE_FORWARD`        | Enable forwarding for this domain (`true`/`false`)            | `true`                              |
+| `DOMAIN_XX_FORWARD_MODE`          | Forward mode: `system` or `upstream`                          | `system`                            |
+| `DOMAIN_XX_FORWARD_UPSTREAM_HOST` | Upstream DNS hosts (space-separated)                          | `dns://1.1.1.1:53 dns://1.0.0.1:53` |
+| `DOMAIN_XX_RELOAD`                | Enable reload plugin (`true`/`false`)                         | `true`                              |
+| `DOMAIN_XX_CACHE`                 | Cache TTL in seconds                                          | `30`                                |
+| `DOMAIN_XX_ERRORS`                | Enable errors plugin (`true`/`false`)                         | `true`                              |
+| `DOMAIN_XX_LOG_QUERIES`           | Enable logging of querites (`true` / `false`)                 | `true`                              |
+| `DOMAIN_XX_LOOP`                  | Enable loop plugin (`true`/`false`)                           | `true`                              |
 
 #### Global/Default Variables
 
-| Variable                        | Description                                                    | Default                                  |
-| ------------------------------- | -------------------------------------------------------------- | ---------------------------------------- |
-| `DEFAULT_ENABLE_FORWARD`        | Default for per-domain forwarding                              | `true`                                   |
-| `DEFAULT_FORWARD_MODE`          | Default forward mode                                           | `system`                                 |
-| `DEFAULT_FORWARD_UPSTREAM_HOST` | Default upstream DNS hosts                                     | `dns://1.1.1.1:53 dns://1.0.0.1:53`      |
-| `DEFAULT_RELOAD`                | Default reload plugin                                          | `true`                                   |
-| `DEFAULT_CACHE`                 | Default cache TTL                                              | `30`                                     |
-| `DEFAULT_ERRORS`                | Default errors plugin                                          | `true`                                   |
-| `DEFAULT_LOOP`                  | Default loop plugin                                            | `true`                                   |
+| Variable                        | Description                       | Default                             |
+| ------------------------------- | --------------------------------- | ----------------------------------- |
+| `DEFAULT_ENABLE_FORWARD`        | Default for per-domain forwarding | `true`                              |
+| `DEFAULT_FORWARD_MODE`          | Default forward mode              | `system`                            |
+| `DEFAULT_FORWARD_UPSTREAM_HOST` | Default upstream DNS hosts        | `dns://1.1.1.1:53 dns://1.0.0.1:53` |
+| `DEFAULT_RELOAD`                | Default reload plugin             | `true`                              |
+| `DEFAULT_CACHE`                 | Default cache TTL                 | `30`                                |
+| `DEFAULT_ERRORS`                | Default errors plugin             | `true`                              |
+| `DEFAULT_LOOP`                  | Default loop plugin               | `true`                              |
+| `DEFAULT_LOG_QUERIES`           | Default logging of queries        | `true`                              |
 
 #### Example: Multiple Domains
 
@@ -168,16 +170,18 @@ services:
       - DEFAULT_FORWARD_UPSTREAM_HOST=dns://1.1.1.1:53 dns://1.0.0.1:53
       - DEFAULT_CACHE=30
       - DEFAULT_ERRORS=true
+      - DEFAULT_LOG_QUERIES=true
       - DEFAULT_LOOP=true
+
 ```
 
 This will configure two domains, one as a primary and one as a secondary, each with their own settings. You can add as many `DOMAIN_XX_*` blocks as needed for additional domains.
 
 ### Networking
 
-| Port | Protocol | Description |
-| ---- | -------- | ----------- |
-| `53` | `udp`    | CoreDNS     |
+| Port | Protocol  | Description |
+| ---- | --------- | ----------- |
+| `53` | `tcp+udp` | CoreDNS     |
 
 
 ## Maintenance

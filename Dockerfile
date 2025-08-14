@@ -6,7 +6,7 @@ LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ARG COREDNS_VERSION
 
-ENV COREDNS_VERSION=${COREDNS_VERSION:-"v1.12.2"} \
+ENV COREDNS_VERSION=${COREDNS_VERSION:-"v1.12.3"} \
     COREDNS_REPO_URL=https://github.com/coredns/coredns \
     CONTAINER_ENABLE_MESSAGING=FALSE \
     IMAGE_NAME="tiredofit/coredns" \
