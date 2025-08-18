@@ -4,6 +4,32 @@ source /assets/functions/00-container
 prepare_service
 SERVICE_NAME="coredns"
 
+cat <<EOF
+
+***************************************************************************************
+*                                                                                     *
+*                    END OF LIFE NOTICE AUGUST 18, 2025                               *
+*                               tiredofit/coredns                                     *
+*                                                                                     *
+* This image is no longer maintained as of and will not receive updates.              *
+*                                                                                     *
+* A successor image is available at:                                                  *
+*                                                                                     *
+* Repository | Documentation:                                                         *
+*   - https://github.com/nfrastack/container-coredns                                  *
+*                                                                                     *
+* Image Registries:                                                                   *
+*   - https://hub.docker.com/r/nfrastack/coredns                                      *
+*   - https://github.com/nfrastack/container-coredns/pkgs/container/container-coredns *
+*                                                                                     *
+* Please visit https://nfrastack.com for more information.                            *
+*                                                                                     *
+***************************************************************************************
+
+EOF
+
+sleep 15
+
 bootstrap_filesystem logs
 bootstrap_filesystem coredns
 configure_coredns
