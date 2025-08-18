@@ -1,7 +1,11 @@
 #!/command/with-contenv bash
+# SPDX-FileCopyrightText: © 2025 Nfrastack <code@nfrastack.com>
+#
+# SPDX-License-Identifier: MIT
 
-source /assets/functions/00-container
-PROCESS_NAME="coredns"
+source /container/base/functions/container/init
+
+SERVICE_NAME="coredns"
 prepare_service
 check_container_initialized
 
@@ -33,4 +37,4 @@ esac
 print_start "Starting CoreDNS ${COREDNS_VERSION}"
 export GOMAXPROCS=${MAX_CPUS}
 exec s6-setuidgid "${COREDNS_USER}" coredns \
-                                     -conf ${CONFIG_PATH}/${CONFIG_FILE} | ts -m '%Y-%m-%dT%H:%M.%S' >> ${LOG_PATH}/${LOG_FILE}
+                                     -conf ${CONFIG_PATH}/${CONFIG_FILE} | ts -m '%Y-%m-%dT%H:%M.%S' | silent sudo -u ${COREDNS_USER} tee -a ${LOG_PATH}/${LOG_FILE}

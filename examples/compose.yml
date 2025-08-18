@@ -1,6 +1,6 @@
 services:
   coredns-app:
-    image: tiredofit/coredns
+    image: docker.io/nfrastack/coredns
     container_name: coredns-app
     ports:
       - 53:53
@@ -11,8 +11,6 @@ services:
       - ./logs:/logs
     environment:
       - TIMEZONE=America/Vancouver
-      - CONTAINER_NAME=coredns-app
-      - CONTAINER_ENABLE_MONITORING=FALSE
 
       - LISTEN_PORT=53
 
