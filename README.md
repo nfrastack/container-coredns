@@ -30,7 +30,6 @@ This repository will build a container with [CoreDNS](https://coredns.io), a DNS
   - [Networking](#networking)
 - [Maintenance](#maintenance)
   - [Shell Access](#shell-access)
-  - [Manual Definition Updates](#manual-definition-updates)
 - [Support \& Maintenance](#support--maintenance)
 - [References](#references)
 - [License](#license)
@@ -204,10 +203,6 @@ This will configure two domains, one as a primary and one as a secondary, each w
 ### Shell Access
 
 For debugging and maintenance, `bash` and `sh` are available in the container.
-
-### Manual Definition Updates
-
-Manual Definition Updates can be performed by entering the container and typing `update-now`
 
 ## Support & Maintenance
 
