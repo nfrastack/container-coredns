@@ -23,8 +23,8 @@ COPY LICENSE /usr/src/container/LICENSE
 COPY README.md /usr/src/container/README.md
 
 ARG \
-    COREDNS_REPO_URL=v1.12.4 \
-    COREDNS_VERSION="https://github.com/coredns/coredns"
+    COREDNS_REPO_URL="https://github.com/coredns/coredns" \
+    COREDNS_VERSION="v1.12.4"
 
 ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \
