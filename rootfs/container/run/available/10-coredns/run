@@ -34,7 +34,7 @@ case "${LOG_TYPE,,}" in
     ;;
 esac
 
-print_start "Starting CoreDNS ${COREDNS_VERSION}"
+print_start "Starting CoreDNS $(coredns -version | head -n1 | cut -d - -f 2)"
 export GOMAXPROCS=${MAX_CPUS}
 exec s6-setuidgid "${COREDNS_USER}" coredns \
                                      -conf ${CONFIG_PATH}/${CONFIG_FILE} | ts -m '%Y-%m-%dT%H:%M.%S' | silent sudo -u ${COREDNS_USER} tee -a ${LOG_PATH}/${LOG_FILE}

@@ -23,11 +23,10 @@ COPY LICENSE /usr/src/container/LICENSE
 COPY README.md /usr/src/container/README.md
 
 ARG \
-    COREDNS_REPO_URL \
-    COREDNS_VERSION
+    COREDNS_REPO_URL=v1.12.4 \
+    COREDNS_VERSION="https://github.com/coredns/coredns"
 
-ENV COREDNS_VERSION=${COREDNS_VERSION:-"v1.12.4"} \
-    COREDNS_REPO_URL=${COREDNS_REPO_URL:-"https://github.com/coredns/coredns"} \
+ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \
     IMAGE_NAME="nfrastack/coredns" \
     IMAGE_REPO_URL="https://github.com/nfrastack/container-coredns/"
@@ -49,7 +48,7 @@ RUN echo "" && \
                         && \
     \
     source /container/base/functions/container/build && \
-    container_build_log && \
+    container_build_log image && \
     create_user coredns 9376 coredns 9376 && \
     package update && \
     package upgrade && \
@@ -61,6 +60,7 @@ RUN echo "" && \
     clone_git_repo "${COREDNS_REPO_URL}" "${COREDNS_VERSION}" && \
     make && \
     mv coredns /usr/local/bin && \
+    container_build_log add "CoreDNS" "${COREDNS_VERSION}" "${COREDNS_REPO_URL}" && \
     package remove \
                     COREDNS_BUILD_DEPS \
                     && \
