@@ -59,7 +59,7 @@ Example:
 `ghcr.io/nfrastack/container-coredns:1.0` or
 
 * `latest` will be the most recent commit
-* An otpional `tag` may exist that matches the [CHANGELOG](CHANGELOG.md) - These are the safest
+* An optional `tag` may exist that matches the [CHANGELOG](CHANGELOG.md) - These are the safest
 * If it is built for multiple distributions there may exist a value of `alpine` or `debian`
 * If there are multiple distribution variations it may include a version - see the registry for availability
 
@@ -186,8 +186,8 @@ This will configure two domains, one as a primary and one as a secondary, each w
 
 | Type  | Name      | ID   |
 | ----- | --------- | ---- |
-| User  | `coredns` | 9376 |
-| Group | `coredns` | 9376 |
+| User  | `coredns` | 5353 |
+| Group | `coredns` | 5353 |
 
 ### Networking
 

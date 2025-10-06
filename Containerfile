@@ -2,11 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
-ARG BASE_IMAGE
-ARG DISTRO
-ARG DISTRO_VARIANT
+ARG \
+    BASE_IMAGE
 
-FROM ${BASE_IMAGE}:${DISTRO}_${DISTRO_VARIANT}
+FROM ${BASE_IMAGE}
 
 LABEL \
         org.opencontainers.image.title="CoreDNS" \
@@ -24,7 +23,7 @@ COPY README.md /usr/src/container/README.md
 
 ARG \
     COREDNS_REPO_URL="https://github.com/coredns/coredns" \
-    COREDNS_VERSION="v1.12.4"
+    COREDNS_VERSION="v1.13.0"
 
 ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \
@@ -49,7 +48,7 @@ RUN echo "" && \
     \
     source /container/base/functions/container/build && \
     container_build_log image && \
-    create_user coredns 9376 coredns 9376 && \
+    create_user coredns 5353 coredns 5353 && \
     package update && \
     package upgrade && \
     package install \
