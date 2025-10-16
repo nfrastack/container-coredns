@@ -23,7 +23,7 @@ COPY README.md /usr/src/container/README.md
 
 ARG \
     COREDNS_REPO_URL="https://github.com/coredns/coredns" \
-    COREDNS_VERSION="v1.13.0"
+    COREDNS_VERSION="v1.13.1"
 
 ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \
@@ -33,7 +33,6 @@ ENV \
 RUN echo "" && \
     COREDNS_BUILD_DEPS_ALPINE=" \
                                 build-base \
-                                go \
                                 git \
                             " \
                         && \
@@ -56,6 +55,7 @@ RUN echo "" && \
                         COREDNS_RUN_DEPS \
                         && \
     \
+    package build go && \
     clone_git_repo "${COREDNS_REPO_URL}" "${COREDNS_VERSION}" && \
     make && \
     mv coredns /usr/local/bin && \

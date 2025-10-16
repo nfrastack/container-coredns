@@ -1,3 +1,10 @@
+## 1.0.4 2025-10-15 <dave at tiredofit dot ca>
+
+   ### Added
+      - CoreDNS 1.13.1
+      - Go 1.25.2
+
+
 ## 1.0.3 2025-10-06 <dave at tiredofit dot ca>
 
    ### Added
