@@ -14,8 +14,8 @@ liftoff
 case "${LOG_TYPE,,}" in
     both )
         SHOW_OUTPUT=TRUE
-        touch "${LOG_PATH}"/"${LOG_FILE}"
-        chown -R "${COREDNS_USER}" "${LOG_PATH}"/"${LOG_FILE}"
+        touch "${LOG_PATH%/}"/"${LOG_FILE}"
+        chown -R "${COREDNS_USER}" "${LOG_PATH%/}"/"${LOG_FILE}"
     ;;
     console )
         SHOW_OUTPUT=TRUE
@@ -24,8 +24,8 @@ case "${LOG_TYPE,,}" in
     ;;
     file )
         SHOW_OUTPUT=FALSE
-        touch "${LOG_PATH}"/"${LOG_FILE}"
-        chown -R "${COREDNS_USER}" "${LOG_PATH}"/"${LOG_FILE}"
+        touch "${LOG_PATH%/}"/"${LOG_FILE}"
+        chown -R "${COREDNS_USER}" "${LOG_PATH%/}"/"${LOG_FILE}"
     ;;
     none )
         SHOW_OUTPUT=FALSE

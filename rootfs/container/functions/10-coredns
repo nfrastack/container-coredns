@@ -17,7 +17,7 @@ coredns_bootstrap_filesystem() {
                     create_folder \
                         "${LOG_PATH}" \
                         coredns:coredns 755
-                        create_logrotate coredns "${LOG_PATH}"/"${LOG_FILE}" coredns "${COREDNS_USER}" coredns
+                        create_logrotate coredns "${LOG_PATH%/}"/"${LOG_FILE}" coredns "${COREDNS_USER}" coredns
                     ;;
             esac
         ;;
