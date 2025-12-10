@@ -1,3 +1,9 @@
+## 1.0.5 2025-12-09 <dave at tiredofit dot ca>
+
+   ### Added
+      - CoreDNS 1.13.2
+
+
 ## 1.0.4 2025-10-15 <dave at tiredofit dot ca>
 
    ### Added
@@ -25,5 +31,3 @@
    ### Added
       - Alpine 3.22
       - CoreDNS 1.12.3
-
-
