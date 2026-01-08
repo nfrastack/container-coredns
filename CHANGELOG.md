@@ -1,3 +1,10 @@
+## 1.0.6 2026-01-08 <code at nfastack dot com>
+
+   ### Added
+      - CoreDNS 1.14.0
+      - Alpine 3.23 base
+
+
 ## 1.0.5 2025-12-09 <dave at tiredofit dot ca>
 
    ### Added
