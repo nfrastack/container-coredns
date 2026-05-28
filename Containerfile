@@ -55,7 +55,7 @@ RUN echo "" && \
                         COREDNS_RUN_DEPS \
                         && \
     \
-    package build go && \
+    package build go buildtime && \
     clone_git_repo "${COREDNS_REPO_URL}" "${COREDNS_VERSION}" && \
     make && \
     mv coredns /usr/local/bin && \
