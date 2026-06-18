@@ -27,6 +27,7 @@ ARG \
 
 ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \
+    CONTAINER_ENABLE_SCHEDULING=TRUE \
     IMAGE_NAME="nfrastack/coredns" \
     IMAGE_REPO_URL="https://github.com/nfrastack/container-coredns/"
 

@@ -1,3 +1,10 @@
+## 1.0.11 2026-06-17 <code at nfrastack dot com>
+
+   ### Changed
+      - Enable Scheduler
+      - Alpine 3.24 base
+
+
 ## 1.0.10 2026-06-09 <code at nfrastack dot com>
 
    ### Added
@@ -26,7 +33,7 @@
 
    ### Added
       - CoreDNS 1.14.0
-      - Alpine 3.23 base
+      - Alpine 3.24 base
 
 
 ## 1.0.5 2025-12-09 <dave at tiredofit dot ca>
