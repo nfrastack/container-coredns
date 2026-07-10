@@ -1,3 +1,9 @@
+## 1.0.13 2026-07-10 <code at nfrastack dot com>
+
+   ### Added
+      - CoreDNS 1.14.6
+
+
 ## 1.0.12 2026-07-09 <code at nfrastack dot com>
 
    ### Added
