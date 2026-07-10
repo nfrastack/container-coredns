@@ -1,3 +1,10 @@
+## 1.0.12 2026-07-09 <code at nfrastack dot com>
+
+   ### Added
+      - CoreDNS 1.14.5
+      - Alpine 3.24 base
+
+
 ## 1.0.11 2026-06-17 <code at nfrastack dot com>
 
    ### Changed
