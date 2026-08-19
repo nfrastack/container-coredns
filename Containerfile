@@ -23,7 +23,7 @@ COPY README.md /usr/src/container/README.md
 
 ARG \
     COREDNS_REPO_URL="https://github.com/coredns/coredns" \
-    COREDNS_VERSION="v1.14.6"
+    COREDNS_VERSION="v1.14.7"
 
 ENV \
     CONTAINER_ENABLE_MESSAGING=FALSE \

@@ -17,10 +17,7 @@ jobs:
       matrix:
         include:
           - {
-              distro: "alpine",
-              distro_variant: "3.24",
-              latest: "true",
-              arch: "linux/amd64,linux/arm64",
+              distro: "alpine", distro_variant: "3.24", latest: "true", arch: "linux/amd64,linux/arm64",
             }
     uses: nfrastack/gha/.github/workflows/container-build_generic.yml@main
     with:
